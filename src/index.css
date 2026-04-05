@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+
+    --resume-primary: #2f5785;
+    --resume-tag: #8bc34a;
+    --resume-page-padding: 16mm 18mm;
+    --resume-page-padding-x: 18mm;
+    --resume-module-gap: 24px;
+    --resume-title-size: 16px;
+    --resume-body-size: 14px;
+    --resume-line-height: 1.5;
+
+    --resume-primary-light: color-mix(in srgb, var(--resume-primary) 12%, white);
+    --editor-module: #f8fafc;
+    --editor-module-active: #f8fafc;
+    --editor-drop: color-mix(in srgb, var(--resume-primary) 40%, white)
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --resume-primary-light: color-mix(in srgb, var(--resume-primary) 15%, hsl(0 0% 3.9%));
+    --editor-module: color-mix(in srgb, var(--resume-primary) 8%, hsl(0 0% 3.9%));
+    --editor-module-active: color-mix(in srgb, var(--resume-primary) 15%, hsl(0 0% 3.9%));
+    --editor-drop: color-mix(in srgb, var(--resume-primary) 40%, hsl(0 0% 3.9%))
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* 抽屉/弹窗自动聚焦时隐藏焦点轮廓，仅键盘 Tab 导航时显示 */
+  [role="dialog"] :focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: white;
+  }
+
+  /* 标题不与正文断裂 */
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+
+  /* 改善孤行和寡行 */
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* 模块内条目尽量不跨页 */
+  section > div {
+    break-inside: avoid;
+  }
+
+  /* 分页模式：每个 .resume-page 独占一个打印页面 */
+  .resume-page {
+    break-after: page;
+    break-inside: avoid;
+  }
+  .resume-page:last-child {
+    break-after: auto;
+  }
+
+  /* 打印时隐藏测量容器 */
+  .resume-measure-container {
+    display: none;
+  }
+}
+
+/* 富文本渲染样式（简历预览和打印） */
+.rich-content ul {
+  list-style-type: disc;
+  padding-left: 1rem;
+}
+.rich-content ol {
+  list-style-type: decimal;
+  padding-left: 1rem;
+}
+.rich-content ul, .rich-content ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.rich-content a {
+  color: var(--resume-primary);
+  text-decoration: underline;
+}
+
+/* Tiptap 编辑器内容样式 */
+.tiptap {
+  outline: none;
+  min-height: 150px;
+  font-size: 0.875rem;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: hsl(var(--muted-foreground));
+  pointer-events: none;
+  height: 0;
+}
+.tiptap ul {
+  list-style-type: disc;
+  padding-left: 1rem;
+}
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1rem;
+}
+.tiptap ul, .tiptap ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.tiptap a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* 排版：标题/正文字号由 CSS 变量控制 */
+.resume-title-text {
+  font-size: var(--resume-title-size);
+}
+.resume-body-text {
+  font-size: var(--resume-body-size);
+}
+
+/* 排版：模块间距由 CSS 变量统一控制，穿透 EditableSection 包装层覆盖 Tailwind mb-X */
+div.resume-module > div > section,
+div.resume-module > div > div {
+  margin-bottom: var(--resume-module-gap);
+}
+div.resume-module:last-child > div > section,
+div.resume-module:last-child > div > div {
+  margin-bottom: 0;
+}
+
+/* 排版：行间距由 CSS 变量控制，覆盖 Tailwind text-xs/text-sm 等自带的 line-height */
+div.resume-layout p,
+div.resume-layout li,
+div.resume-layout span,
+div.resume-layout h1,
+div.resume-layout h2,
+div.resume-layout h3,
+div.resume-layout h4,
+div.resume-layout td,
+div.resume-layout th,
+div.resume-layout a {
+  line-height: var(--resume-line-height);
+}
+
+/* 排版：页边距由 CSS 变量控制 */
+.resume-padding {
+  padding: var(--resume-page-padding);
+}
+
+/* Template4 左侧额外缩进 */
+.resume-padding-offset-left {
+  padding-left: calc(var(--resume-page-padding-x) + 4mm);
+}
+
+/* 分页测量容器：不可见但参与布局计算 */
+.resume-measure-container {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

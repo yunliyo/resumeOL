@@ -1,0 +1,22 @@
+# Claude 工作文件
+.claude
+CLAUDE.md
+
+# 依赖包和构建输出
+node_modules
+dist
+*.tsbuildinfo
+
+# 环境变量
+*.local
+
+# 编辑器
+.vscode
+.idea
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# npm
+.npm
