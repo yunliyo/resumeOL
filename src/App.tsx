@@ -5,6 +5,7 @@ import { useThemeEffect } from '@/hooks/useThemeEffect';
 import { useSaveShortcut } from '@/hooks/useSaveShortcut';
 import { Toolbar, FloatingToolbar } from '@/components/Toolbar';
 import { ResumeView } from '@/components/Resume';
+import MobileWarning from '@/components/MobileWarning';
 import { Toaster } from '@/components/ui/sonner';
 import { Button } from '@/components/ui/button';
 
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-gray-100">
+      <MobileWarning />
       <Toolbar />
       <main className="flex flex-1 justify-center overflow-auto py-8 print:overflow-visible print:py-0">
         <ResumeView config={config} />
