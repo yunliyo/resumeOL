@@ -4,7 +4,7 @@ import { getSampleResume } from '@/config/sample-resume';
 import { detectBrowserLanguage, isDemoMode } from '@/i18n';
 
 const API_URL = '/api/resume';
-const LS_KEY = 'opresume-config';
+const LS_KEY = 'resumeOL-config';
 
 function isDev(): boolean {
   return import.meta.env.DEV;
@@ -122,7 +122,7 @@ export async function saveResume(resume: ExtendedJSONResume): Promise<void> {
 
 export function exportResume(resume: ExtendedJSONResume, filename?: string): void {
   const cleaned = removeCustomFieldIds(resume);
-  const output = { ...cleaned, opresumeVersion: __APP_VERSION__ };
+  const output = { ...cleaned, resumeOLVersion: __APP_VERSION__ };
   const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -151,7 +151,7 @@ export function importResume(file: File): Promise<ExtendedJSONResume> {
     const reader = new FileReader();
     reader.onload = () => {
       try {
-        const { opresumeVersion: _, ...data } = JSON.parse(reader.result as string);
+        const { resumeOLVersion: _, ...data } = JSON.parse(reader.result as string);
         if (isExtendedJSONResume(data)) {
           resolve(addCustomFieldIds(data));
         } else if (isLegacyFormat(data)) {

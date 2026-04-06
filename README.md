@@ -1,10 +1,12 @@
 <div align="center">
 
-# OpResume
+# resumeOL
 
 **本项目源于 GitHub 用户 “oopooa” 的 [OpResume](https://github.com/oopooa/opresume)**
 
-**免登录、高颜值的在线简历生成器** — 数据仅本地存储，无泄漏风险，随时导出
+**免登录、高颜值的在线简历生成器** — 数据仅本地存储，无泄漏风险，随时导出。  
+
+**仅支持电脑浏览器访问**  
 
 [![React](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -12,7 +14,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06b6d4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 <a href="https://linux.do" alt="LINUX DO"><img src="https://shorturl.at/ggSqS" /></a>
 
-<img src="docs/images/mockup1.png" alt="OpResume Preview" width="800" />
+<img src="docs/images/mockup1.png" alt="resumeOL Preview" width="800" />
 
 </div>
 
@@ -49,7 +51,7 @@
 ```bash
 # 1. 克隆项目
 git clone
-cd opresume
+cd resumeOL
 
 # 2. 安装依赖
 npm install

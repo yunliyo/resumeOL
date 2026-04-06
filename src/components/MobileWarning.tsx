@@ -55,7 +55,7 @@ const MobileWarning = () => {
           请使用电脑浏览器访问
         </h1>
         <p className="text-gray-600 mb-6 leading-relaxed">
-          OpResume 是一个专为电脑设计的简历编辑器，为了获得最佳体验和完整功能，请使用电脑浏览器访问。
+          resumeOL 是一个专为电脑设计的简历编辑器，为了获得最佳体验和完整功能，请使用电脑浏览器访问。
         </p>
         <div className="bg-gray-50 rounded-lg p-3 text-sm text-gray-500">
           <p>支持的浏览器：Edge、Chrome、Firefox、Opera、Safari 等现代浏览器</p>

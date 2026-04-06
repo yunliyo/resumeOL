@@ -60,7 +60,7 @@ i18n
       order: ['querystring', 'localStorage', 'navigator'],
       caches: ['localStorage'],
       lookupQuerystring: 'lang',
-      lookupLocalStorage: 'opresume_ui_lang',
+      lookupLocalStorage: 'resumeOL_ui_lang',
     },
     interpolation: { escapeValue: false },
   });

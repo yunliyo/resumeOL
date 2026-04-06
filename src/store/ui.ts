@@ -111,7 +111,7 @@ export const useUIStore = create<UIStore>()(
         set((s) => ({ layout: { ...s.layout, lineHeight: value } })),
     }),
     {
-      name: 'opresume_ui',
+      name: 'resumeOL_ui',
       partialize: (state) => ({
         theme: state.theme,
         template: state.template,

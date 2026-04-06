@@ -132,7 +132,7 @@
     {
       "name": "个人项目地址",
       "description": "基于 Next.js + MDX 搭建，累计发表 80+ 篇技术文章，月访问量 5000+",
-      "url": "https://github.com/oopooa/opresume",
+      "url": "https://github.com/yunliyo/resumeOL",
       "x-op-id": "portfolio-1",
       "x-op-type": "portfolio"
     }
